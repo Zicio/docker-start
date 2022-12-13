@@ -1,0 +1,63 @@
+1) 
+PS C:\Users\zicio\Documents\Учеба\Нетология\NDJS-17\Docker-start> docker pull busybox
+Using default tag: latest
+latest: Pulling from library/busybox
+45a0cdc5c8d3: Pull complete
+Digest: sha256:3b3128d9df6bbbcc92e2358e596c9fbd722a437a62bafbc51607970e9e3b8869
+Status: Downloaded newer image for busybox:latest
+docker.io/library/busybox:latest
+
+2) 
+PS C:\Users\zicio\Documents\Учеба\Нетология\NDJS-17\Docker-start> docker run -it --name pinger busybox ping -c 7 netology.ru
+PING netology.ru (188.114.99.224): 56 data bytes
+
+--- netology.ru ping statistics ---
+7 packets transmitted, 0 packets received, 100% packet loss
+
+3) 
+PS C:\Users\zicio\Documents\Учеба\Нетология\NDJS-17\Docker-start> docker ps -a
+CONTAINER ID   IMAGE     COMMAND                  CREATED          STATUS                      PORTS     NAMES
+24a7a80fef2c   busybox   "ping -c 7 netology.…"   46 seconds ago   Exited (1) 30 seconds ago             pinger
+
+4) 
+PS C:\Users\zicio\Documents\Учеба\Нетология\NDJS-17\Docker-start> docker logs pinger
+PING netology.ru (188.114.99.224): 56 data bytes
+
+--- netology.ru ping statistics ---
+7 packets transmitted, 0 packets received, 100% packet loss
+
+5) 
+PS C:\Users\zicio\Documents\Учеба\Нетология\NDJS-17\Docker-start> docker start pinger
+pinger
+
+6) 
+PS C:\Users\zicio\Documents\Учеба\Нетология\NDJS-17\Docker-start> docker ps -a
+CONTAINER ID   IMAGE     COMMAND                  CREATED         STATUS                     PORTS     NAMES
+24a7a80fef2c   busybox   "ping -c 7 netology.…"   3 minutes ago   Exited (1) 5 seconds ago             pinger
+
+
+7) 
+PS C:\Users\zicio\Documents\Учеба\Нетология\NDJS-17\Docker-start> docker logs pinger
+PING netology.ru (188.114.99.224): 56 data bytes
+
+--- netology.ru ping statistics ---
+7 packets transmitted, 0 packets received, 100% packet loss
+PING netology.ru (188.114.99.224): 56 data bytes
+
+--- netology.ru ping statistics ---
+7 packets transmitted, 0 packets received, 100% packet loss
+
+8) 
+Запущена суммарно 2 раза, 14 запросов.
+
+9) 
+PS C:\Users\zicio\Documents\Учеба\Нетология\NDJS-17\Docker-start> docker rm pinger
+pinger
+
+10) 
+PS C:\Users\zicio\Documents\Учеба\Нетология\NDJS-17\Docker-start> docker rmi busybox
+Untagged: busybox:latest
+Untagged: busybox@sha256:3b3128d9df6bbbcc92e2358e596c9fbd722a437a62bafbc51607970e9e3b8869
+Deleted: sha256:334e4a014c81bd4050daa78c7dfd2ae87855e9052721c164ea9d9d9a416ebdd3
+Deleted: sha256:98004ed6104b2f4cc21559ea6e4a742ebf6731e37b5d1b04013ca68862749ba3
+
